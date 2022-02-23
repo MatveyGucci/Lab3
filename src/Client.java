@@ -16,11 +16,13 @@ public class Client {
     public Client() throws MalformedURLException {
     }
 
-    public void createAcc() throws IOException {
-        URL url = new URL("http://95.217.177.249/casino/createacc?id=lol");
+    public void createAcc(String string) throws IOException {
+        String urll = "http://95.217.177.249/casino/createacc?id=%s";
+        URL url = new URL(String.format(urll, string));
         url.openConnection();
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.connect();
+        conn.getResponseCode();
+        System.out.println(conn.getInputStream());
 
     }
 
@@ -28,6 +30,7 @@ public class Client {
         String buffertime = mtinfoGetter(num).account.deletionTime;
         buffertime = buffertime.replaceAll("Z","");
         LocalDateTime time = LocalDateTime.parse(buffertime);
+        time = time.minusHours(1);
 
         System.out.println(time);
 
@@ -49,8 +52,8 @@ public class Client {
 
 
     }
-    public message mtinfoGetter (int number) throws IOException, InterruptedException {
-        URL url = new URL (String.format(mtlink, "lol", 1,number));
+    public message mtinfoGetter (long number) throws IOException, InterruptedException {
+        URL url = new URL (String.format(mtlink, "loll11", 1,number));
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.connect();
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));

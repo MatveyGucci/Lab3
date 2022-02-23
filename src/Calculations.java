@@ -8,10 +8,10 @@ public class Calculations {
     public void calculate () throws IOException, InterruptedException {
         int [] xs = new int[3];
         for (int i =0; i <3; i++) {
-            xs[i] = client.infoGetter(1).realNumber;
+            xs[i] = (int) client.infoGetter(1).realNumber;
         }
         lcg.countAC(xs[0],xs[1],xs[2]);
-        int winnum = lcg.predict(client.infoGetter(1).realNumber);
+        int winnum = lcg.predict((int) client.infoGetter(1).realNumber);
         client.infoGetter(winnum);
     }
 
