@@ -6,7 +6,9 @@ public class Main {
         Client client = new Client();
         //client.createAcc();
        //client.infoGetter();
-        Calculations calculations = new Calculations();
-        calculations.calculate();
+        //Calculations calculations = new Calculations();
+        //calculations.calculate();
+        client.mtinfoGetter(1);
+        client.time(1);
     }
 }
